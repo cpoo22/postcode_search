@@ -8,4 +8,7 @@ RSpec.describe ::PostcodeRules do
   it 'allows a postcode if it is in an allowed LSOA' do
     expect(rules.allow?(allowed_postcode)).to be true
   end
+  it 'loads the config file correctly' do
+    expect(described_class.new('spec/fixtures/postcode_rules.yml').prefixes).to eq ['disneyland', 'shire']
+  end
 end
