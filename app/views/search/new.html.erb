@@ -1,5 +1,12 @@
 <h1>Search</h1>
 
+<% if @errors.present? %>
+  You must fix the following errors:
+  <% @errors.each do |error| %>
+    <p><%= error %></p>
+  <% end %>
+<% end %>
+
 <% if !@postcode_allowed.nil? %>
   Postcode <%= @postcode %> is <%= @postcode_allowed ? 'allowed.  Hurrah!' : 'not allowed.  Boo hiss boo!' %>
 <% end %>

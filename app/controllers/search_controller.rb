@@ -6,9 +6,14 @@ class SearchController < ApplicationController
 
   # POST /search
   def search
-    @postcode = search_params
+    @errors = []
+    begin
+      @postcode = search_params
 
-    @postcode_allowed = rules.allow?(@postcode)
+      @postcode_allowed = rules.allow?(@postcode)
+    rescue ActionController::ParameterMissing => e
+      @errors << 'You must supply a postcode'
+    end
 
     respond_to do |format|
       format.html { render :new }

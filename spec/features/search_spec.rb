@@ -33,4 +33,11 @@ feature 'Search' do
     click_button 'Look up Postcode'
     expect(page).to have_content 'Hurrah'
   end
+
+  scenario 'Searching with empty params' do
+    visit '/search'
+    fill_in 'postcode', with: ''
+    click_button 'Look up Postcode'
+    expect(page).to have_content 'You must supply a postcode'
+  end
 end
