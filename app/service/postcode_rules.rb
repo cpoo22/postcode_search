@@ -1,5 +1,6 @@
-class PostcodeRules
+# frozen_string_literal: true
 
+class PostcodeRules
   CONFIG_PATH = 'config/postcode_rules.yml'
 
   def initialize(path = CONFIG_PATH)
@@ -7,7 +8,10 @@ class PostcodeRules
   end
 
   def allow?(postcode)
-    true
+    result = PostcodeLookup.lsoa(postcode: postcode)
+    return true if result == 'Postcode not found'
+
+    prefixes.any? { |prefix| result.start_with?(prefix) }
   end
 
   def prefixes
