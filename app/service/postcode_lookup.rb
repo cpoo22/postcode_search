@@ -3,6 +3,12 @@
 require 'net/http'
 
 class PostcodeLookup
+  def lsoa(postcode:)
+    cleaned_postcode = clean_postcode(postcode)
+    result = call_api(cleaned_postcode)
+    extract_lsoa(result)
+  end
+
   def clean_postcode(postcode)
     postcode.downcase.gsub(/\s+/, '')
   end
