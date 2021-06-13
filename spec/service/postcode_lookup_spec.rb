@@ -23,4 +23,12 @@ RSpec.describe PostcodeLookup do
       expect(lookup.extract_lsoa(unfound_result)).to eq 'Postcode not found'
     end
   end
+
+  context '#call_api' do
+    it 'returns a valid result' do
+      result = lookup.call_api('se17qd')
+      expect(result.keys).to eq ['status', 'result']
+      expect(result['result']['lsoa']).to eq 'Southwark 034A'
+    end
+  end
 end
