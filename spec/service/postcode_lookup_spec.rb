@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe PostcodeLookup do
-  subject(:lookup) { described_class.new }
+  subject(:lookup) { described_class }
 
   let(:allowed_postcode) { 'SE1 7QD' }
   let(:unfound_postcode) { 'SH24 1AA' }

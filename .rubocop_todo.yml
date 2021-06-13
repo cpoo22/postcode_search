@@ -14,3 +14,7 @@ Style/Documentation:
     - 'test/**/*'
     - 'app/**/*'
     - 'config/application.rb'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*.rb'
