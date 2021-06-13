@@ -22,6 +22,6 @@ class SearchController < ApplicationController
   end
 
   def rules
-    @rules ||= PostcodeRules.new
+    PostcodeRules.new
   end
 end
