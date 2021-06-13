@@ -34,6 +34,9 @@ end
 
 group :test do
   gem 'simplecov', require: false, group: :test
+
+  # Front-end testing framework
+  gem 'capybara'
 end
 
 group :development do
