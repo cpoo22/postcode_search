@@ -1,2 +1,18 @@
 <h1>Search</h1>
 
+<% if !@postcode_allowed.nil? %>
+  Postcode <%= @postcode %> is <%= @postcode_allowed ? 'allowed.  Hurrah!' : 'not allowed.  Boo hiss boo!' %>
+<% end %>
+
+<%= form_with(url: search_path) do |form| %>
+
+  <div class="field">
+    <%= form.label :postcode %>
+    <%= form.text_field :postcode %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Look up Postcode' %>
+  </div>
+<% end %>
+
