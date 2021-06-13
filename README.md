@@ -1,24 +1,25 @@
-# README
+# A Simple Postcode checker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby version 3.0.1
 
-Things you may want to cover:
+Rails version 6.1.3.2
 
-* Ruby version
 
-* System dependencies
+This is a standard Rails app.  Please make sure you have the correct version of Ruby and Rails 
+installed using your own ruby manager (rbenv, RVM, ruby-build etc)
 
-* Configuration
+Clone the repo from github. `git clone git@github.com:cpoo22/postcode_search.git`
 
-* Database creation
+Move into the project directory `cd postcode_search`
 
-* Database initialization
+Execute `bundle install`
 
-* How to run the test suite
+Assuming there were no issues, you can run the app using `bundle exec rails s`.
 
-* Services (job queues, cache servers, search engines, etc.)
+Open `http://localhost:3000` to get to the search page of the app.
 
-* Deployment instructions
+##Testing
 
-* ...
+To run the test execute `bundle exec rspec spec`
+
+After the first run you should be able to see the test coverage stats in `coverage/index.html`
