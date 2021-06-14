@@ -40,4 +40,13 @@ feature 'Search' do
     click_button 'Look up Postcode'
     expect(page).to have_content 'You must supply a postcode'
   end
+
+  scenario 'Searching with empty params' do
+    allow(Net::HTTP).to receive(:get_response).and_return(nil)
+
+    visit '/search'
+    fill_in 'postcode', with: 'BN11AL'
+    click_button 'Look up Postcode'
+    expect(page).to have_content 'Something went wrong, go get help'
+  end
 end

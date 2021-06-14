@@ -2,6 +2,8 @@
 
 require 'net/http'
 
+class PostcodeLookupError < RuntimeError; end
+
 class PostcodeLookup
   def self.lsoa(postcode:)
     cleaned_postcode = clean_postcode(postcode)
@@ -16,7 +18,11 @@ class PostcodeLookup
   def self.call_api(postcode)
     uri = URI("http://postcodes.io/postcodes/#{postcode}")
 
-    JSON.parse(Net::HTTP.get_response(uri).body)
+    begin
+      JSON.parse(Net::HTTP.get_response(uri).body)
+    rescue StandardError
+      raise PostcodeLookupError, 'Something went wrong, go get help'
+    end
   end
 
   def self.extract_lsoa(res)

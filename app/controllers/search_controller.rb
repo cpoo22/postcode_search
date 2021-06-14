@@ -13,6 +13,8 @@ class SearchController < ApplicationController
       @postcode_allowed = rules.allow?(@postcode)
     rescue ActionController::ParameterMissing
       @errors << 'You must supply a postcode'
+    rescue StandardError => e
+      @errors << e.message
     end
 
     respond_to do |format|

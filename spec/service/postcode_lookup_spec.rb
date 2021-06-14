@@ -43,5 +43,11 @@ RSpec.describe PostcodeLookup do
       expect(result.keys).to eq %w[status result]
       expect(result['result']['lsoa']).to eq 'Southwark 034A'
     end
+
+    it 'raises an error when something goes wrong' do
+      allow(Net::HTTP).to receive(:get_response).and_return(nil)
+
+      expect { lookup.call_api('se17qd') }.to raise_error PostcodeLookupError
+    end
   end
 end
